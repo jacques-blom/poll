@@ -19,14 +19,6 @@ Meteor.methods({
 			return;
 		}
 
-		// Polls.update(poll, {
-		// 	$pull: {
-		// 		answers: {
-		// 			user: this.userId
-		// 		}
-		// 	}
-		// });
-
 		Polls.update(poll, {
 			$push: {
 				answers: {

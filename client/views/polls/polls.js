@@ -67,4 +67,4 @@ Template.polls.events({
 
 	}
 
-})
+});
