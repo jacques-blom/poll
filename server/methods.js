@@ -10,15 +10,22 @@ Meteor.methods({
 		check(poll, String);
 		check(option, Number);
 
-		var pollObj = Polls.findOne(poll);
-
-		Polls.update(poll, {
-			$pull: {
-				answers: {
-					user: this.userId
-				}
-			}
+		var pollObj = Polls.findOne({
+			_id: poll,
+			"answers.user": this.userId
 		});
+
+		if(pollObj) {
+			return;
+		}
+
+		// Polls.update(poll, {
+		// 	$pull: {
+		// 		answers: {
+		// 			user: this.userId
+		// 		}
+		// 	}
+		// });
 
 		Polls.update(poll, {
 			$push: {
