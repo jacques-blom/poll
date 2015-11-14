@@ -1,0 +1,19 @@
+<template name="polls">
+
+	<h1>Polls</h1>
+
+	{{#each polls}}
+		
+		<div>{{question}}</div>
+		
+		<div class="rate" style="{{#if chosenOption '1'}}font-weight: bold;{{/if}}" data-option="1">A: {{option_1}} {{optionPercentage "1"}}%</div>
+		<div class="rate" style="{{#if chosenOption '2'}}font-weight: bold;{{/if}}" data-option="2">B: {{option_2}} {{optionPercentage "2"}}%</div>
+		<div class="rate" style="{{#if chosenOption '3'}}font-weight: bold;{{/if}}" data-option="3">C: {{option_3}} {{optionPercentage "3"}}%</div>
+
+		<div>{{userName}}</div>
+
+	{{/each}}
+
+	<a href="/new">New</a>
+
+</template>

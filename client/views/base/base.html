@@ -1,0 +1,9 @@
+<template name="base">
+
+	{{#if currentUser}}
+		{{> yield}}
+	{{else}}
+		{{> login}}
+	{{/if}}
+
+</template>
