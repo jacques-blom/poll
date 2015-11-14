@@ -6,9 +6,9 @@
 		
 		<div>{{question}}</div>
 		
-		<div class="rate" style="{{#if chosenOption '1'}}font-weight: bold;{{/if}}" data-option="1">A: {{option_1}} {{optionPercentage "1"}}%</div>
-		<div class="rate" style="{{#if chosenOption '2'}}font-weight: bold;{{/if}}" data-option="2">B: {{option_2}} {{optionPercentage "2"}}%</div>
-		<div class="rate" style="{{#if chosenOption '3'}}font-weight: bold;{{/if}}" data-option="3">C: {{option_3}} {{optionPercentage "3"}}%</div>
+		<div class="rate" style="{{#if chosenOption '1'}}font-weight: bold;{{/if}}" data-option="1">A: {{option_1}} {{#if answers}}{{optionPercentage "1"}}%{{/if}}</div>
+		<div class="rate" style="{{#if chosenOption '2'}}font-weight: bold;{{/if}}" data-option="2">B: {{option_2}} {{#if answers}}{{optionPercentage "2"}}%{{/if}}</div>
+		<div class="rate" style="{{#if chosenOption '3'}}font-weight: bold;{{/if}}" data-option="3">C: {{option_3}} {{#if answers}}{{optionPercentage "3"}}%{{/if}}</div>
 
 		<div>{{userName}}</div>
 

@@ -19,6 +19,8 @@ Template.polls.helpers({
 		if(!poll) return;
 		if(!poll.answers) return;
 
+		if(poll.answers.length == 0) return 0;
+
 		var currentOptionCount = 0;
 
 		for (var i = 0; i < poll.answers.length; i++) {
