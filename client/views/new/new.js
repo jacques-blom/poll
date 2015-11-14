@@ -13,11 +13,9 @@ Template.new.events({
 			user: Meteor.userId(),
 			userName: Meteor.user().profile.name,
 			inserted: new Date()
-		}, function () {
-			
-			Router.go("/");
-
 		});
+
+		Router.go("/");
 
 	}
 
