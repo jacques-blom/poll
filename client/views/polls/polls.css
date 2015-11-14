@@ -1,0 +1,93 @@
+.poll{
+	box-shadow:  rgba(0, 0, 0, 0.26) 0px 2px 5px 0px, rgba(0, 0, 0, 0.15) 0px 2px 10px 0px;
+	width: 90%;
+	margin: 20px auto;
+	background: #fff;
+	max-width: 750px;
+}
+
+.pollQuestion{
+	padding: 13px 10px;
+	font-size: 18px;
+	background: #03A9F4 ;
+	color: #fff;
+}
+
+.rate{
+	margin: 12px 30px;
+	padding: 6px 10px;
+	color: #039BE5;
+	border: 2px #039BE5 solid;
+	border-radius: 7px;
+	cursor: pointer;
+	position: relative;
+}
+
+.rate:hover{
+	background: #039BE5;
+	color: #fff;
+}
+
+.givenAnswer .rate.chosen{
+	border: 2px #039BE5 solid;
+	background: #039BE5;
+	color: #fff;
+}
+
+.givenAnswer .rate{
+	cursor: default;
+	border: solid #A2A2A2 2px;
+	color: #757575;
+	background: #fff;
+}
+
+.rate span{
+	float: right;
+}
+
+.rateBar{
+	position: absolute;
+	border-top-right-radius:7px;
+	border-bottom-right-radius:7px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	-webkit-transition: width 300ms ease 200ms;
+    -moz-transition: width 300ms ease 200ms;
+    -o-transition: width 300ms ease 200ms;
+    transition: width 300ms ease 200ms;
+}
+
+.givenAnswer .chosen .rateBar{
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.givenAnswer .rateBar{
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.pollBottom{
+	font-size: 14px;
+	margin: 15px;
+	padding-bottom: 15px;
+	color: #424242;
+}
+
+.pollBottom span{
+	font-weight: bold;
+}
+
+.new{
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	background: #F44336;
+	color: #fff;
+	border-bottom: #E57373 solid 1px;
+	border-right: #E57373 solid 1px;
+	box-shadow:  rgba(0, 0, 0, 0.26) 0px 2px 5px 0px, rgba(0, 0, 0, 0.15) 0px 2px 10px 0px;
+
+}

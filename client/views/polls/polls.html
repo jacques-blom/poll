@@ -1,19 +1,36 @@
 <template name="polls">
 
-	<h1>Polls</h1>
 
 	{{#each polls}}
-		
-		<div>{{question}}</div>
-		
-		<div class="rate" style="{{#if chosenOption '1'}}font-weight: bold;{{/if}}" data-option="1">A: {{option_1}} {{#if answers}}{{optionPercentage "1"}}%{{/if}}</div>
-		<div class="rate" style="{{#if chosenOption '2'}}font-weight: bold;{{/if}}" data-option="2">B: {{option_2}} {{#if answers}}{{optionPercentage "2"}}%{{/if}}</div>
-		<div class="rate" style="{{#if chosenOption '3'}}font-weight: bold;{{/if}}" data-option="3">C: {{option_3}} {{#if answers}}{{optionPercentage "3"}}%{{/if}}</div>
 
-		<div>{{userName}}</div>
+		<div class="poll {{#if answers}}givenAnswer{{/if}}">
+		
+			<div class="pollQuestion">{{question}}</div>
+			
+			<div class="rate easeTrans {{#if chosenOption '1'}}chosen{{/if}}" data-option="1">
+				<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "1"}}%{{else}}width:0{{/if}}"></div>
+				{{option_1}} <span>{{#if answers}}{{optionPercentage "1"}}%{{/if}}</span>
+			</div>
+			<div class="rate easeTrans {{#if chosenOption '2'}}chosen{{/if}}" data-option="2">
+				<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "2"}}%{{else}}width:0{{/if}}"></div>
+				{{option_2}} <span>{{#if answers}}{{optionPercentage "2"}}%{{/if}}</span>
+			</div>
+			<div class="rate easeTrans {{#if chosenOption '3'}}chosen{{/if}}" data-option="3">
+				<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "3"}}%{{else}}width:0{{/if}}"></div>
+				{{option_3}} <span>{{#if answers}}{{optionPercentage "3"}}%{{/if}}</span>
+			</div>
+
+			<div class="pollBottom">Posted by <span>{{userName}}</span> &bull; <span>{{answers.length}}</span> votes</div>
+
+		</div>
 
 	{{/each}}
 
-	<a href="/new">New</a>
-
+	<a href="/new">
+		<div class="new">
+			<table class="alignTable"><tr><td>
+				New
+			</td></tr></table>
+		</div>
+	</a>
 </template>

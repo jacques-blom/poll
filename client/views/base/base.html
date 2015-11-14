@@ -1,9 +1,13 @@
 <template name="base">
 
+<div class="base">
+
 	{{#if currentUser}}
 		{{> yield}}
 	{{else}}
 		{{> login}}
 	{{/if}}
+
+</div>
 
 </template>
