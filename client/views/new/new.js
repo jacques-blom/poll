@@ -4,6 +4,7 @@ Template.new.events({
 	"click .insert": function () {
 		
 		Polls.insert({
+			
 			question: $(".question").val(),
 
 			option_1: $(".option_1").val(),
@@ -12,9 +13,8 @@ Template.new.events({
 
 			user: Meteor.userId(),
 			userName: Meteor.user().profile.name,
-			inserted: new Date(),
+			inserted: new Date()
 
-			answersCount: 0
 		});
 
 		Router.go("/");

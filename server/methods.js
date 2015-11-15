@@ -10,24 +10,27 @@ Meteor.methods({
 		check(poll, String);
 		check(option, Number);
 
-		var pollObj = Polls.findOne({
-			_id: poll,
-			"answers.user": this.userId
+		var answered = Meteor.users.findOne({
+			_id: this.userId,
+			"answered.poll": poll
 		});
 
-		if(pollObj) {
+		if(answered) {
 			return;
 		}
 
 		Polls.update(poll, {
+			$inc: {
+				["answers." + option]: 1
+			}
+		});
+
+		Meteor.users.update(this.userId, {
 			$push: {
-				answers: {
-					user: this.userId,
+				answered: {
+					poll: poll,
 					option: option
 				}
-			},
-			$inc: {
-				answersCount: 1
 			}
 		});
 

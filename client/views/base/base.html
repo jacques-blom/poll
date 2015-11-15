@@ -1,13 +1,13 @@
 <template name="base">
 
-<div class="base">
+	<div class="base">
 
-	{{#if currentUser}}
-		{{> yield}}
-	{{else}}
-		{{> login}}
-	{{/if}}
+		{{#if currentUser}}
+			{{> yield}}
+		{{else}}
+			{{> login}}
+		{{/if}}
 
-</div>
+	</div>
 
 </template>

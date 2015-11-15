@@ -6,7 +6,7 @@ Router.configure({
 Router.route("/", {
 	
 	subscriptions: function () {
-		return [Meteor.subscribe("polls"), Meteor.subscribe("votedPolls")];
+		return [Meteor.subscribe("polls"), Meteor.subscribe("votedPolls"), Meteor.subscribe("userAnswered")];
 	},
 
 	action: function () {
