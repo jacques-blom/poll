@@ -1,29 +1,30 @@
 <template name="polls">
 
-	{{#each polls}}
+	<!-- Display the below div for all polls -->
 
-		<div class="poll {{#if answers}}givenAnswer{{/if}}">
+	<div class="poll {{#if answers}}givenAnswer{{/if}}">
+	
+		<div class="pollQuestion">{{question}}</div>
 		
-			<div class="pollQuestion">{{question}}</div>
-			
-			<div class="rate easeTrans {{#if chosenOption '1'}}chosen{{/if}}" data-option="1">
-				<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "1"}}%{{else}}width:0{{/if}}"></div>
-				{{option_1}} <span>{{#if answers}}{{optionPercentage "1"}}%{{/if}}</span>
-			</div>
-			<div class="rate easeTrans {{#if chosenOption '2'}}chosen{{/if}}" data-option="2">
-				<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "2"}}%{{else}}width:0{{/if}}"></div>
-				{{option_2}} <span>{{#if answers}}{{optionPercentage "2"}}%{{/if}}</span>
-			</div>
-			<div class="rate easeTrans {{#if chosenOption '3'}}chosen{{/if}}" data-option="3">
-				<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "3"}}%{{else}}width:0{{/if}}"></div>
-				{{option_3}} <span>{{#if answers}}{{optionPercentage "3"}}%{{/if}}</span>
-			</div>
-
-			<div class="pollBottom">Posted by <span>{{userName}}</span> &bull; <span>{{answersCount}}</span> {{votesText}}</div>
-
+		<!-- For each of the 3 divs below, add the class "chosen" if that option has been chosen by the user -->
+		<!-- And, if "answers" is false, the width of .rateBar must be 0 -->
+		<div class="rate easeTrans" data-option="1">
+			<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "1"}}%{{/if}}"></div>
+			{{option_1}} <span>{{#if answers}}{{optionPercentage "1"}}%{{/if}}</span>
+		</div>
+		<div class="rate easeTrans" data-option="2">
+			<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "2"}}%{{/if}}"></div>
+			{{option_2}} <span>{{#if answers}}{{optionPercentage "2"}}%{{/if}}</span>
+		</div>
+		<div class="rate easeTrans" data-option="3">
+			<div class="rateBar" style="{{#if answers}}width:{{optionPercentage "3"}}%{{/if}}"></div>
+			{{option_3}} <span>{{#if answers}}{{optionPercentage "3"}}%{{/if}}</span>
 		</div>
 
-	{{/each}}
+		<div class="pollBottom">Posted by <span><!-- display the user's name here --></span> &bull; <span><!-- display the answer count here --></span> {{votesText}}</div>
+
+	</div>
+
 
 	<a href="/new">
 		<div class="new">

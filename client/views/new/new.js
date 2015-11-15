@@ -2,22 +2,21 @@
 Template.new.events({
 
 	"click .insert": function () {
-		
-		Polls.insert({
+
+		// Insert a new Poll with the following:
+
+			// Set "question" to the value of the .question input
 			
-			question: $(".question").val(),
+			// Set "option_1" to the value of the .option_1 input
+			// Set "option_1" to the value of the .option_2 input
+			// Set "option_1" to the value of the .option_3 input
+			
+			// Set "user" to the user's user id
+			// Set "userName" to the user's name
+			// Set "inserted" to the current date (a JS Date object)
 
-			option_1: $(".option_1").val(),
-			option_2: $(".option_2").val(),
-			option_3: $(".option_3").val(),
 
-			user: Meteor.userId(),
-			userName: Meteor.user().profile.name,
-			inserted: new Date()
-
-		});
-
-		Router.go("/");
+		// Redirect the user back to the Polls view
 
 	}
 

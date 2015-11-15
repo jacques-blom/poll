@@ -1,20 +1,14 @@
 
 Template.polls.helpers({
 
-	polls: function () {
-		
-		return Polls.find({}, {
-			sort: {
-				inserted: -1
-			}
-		});
-
-	},
+	// Create a helper called "polls" and find all polls
+		// Sort them by date inserted (so that the latest one is returned first)
 
 	answersCount: function () {
 	
-		var answers = Polls.findOne(this._id).answers;
-		if(typeof answers == "undefined") return;
+		// Find the current poll
+		// Assign its ".answers" to the answers variable
+		// And return 0 the function if the attribute doesn't exist
 
 		var totalAnswers = 0;
 		for(option in answers) {
@@ -27,8 +21,7 @@ Template.polls.helpers({
 
 	votesText: function () {
 
-		var answers = Polls.findOne(this._id).answers;
-		if(typeof answers == "undefined") return;
+		// Do the same here as you did in the above helper
 
 		var totalAnswers = 0;
 		for(option in answers) {
@@ -40,6 +33,29 @@ Template.polls.helpers({
 		}
 
 		return "votes";
+
+	},
+
+	chosenOption: function (option) {
+		
+		option = parseInt(option);
+		// Assign the poll's id to the "poll" variable
+
+		// Get the current user and store them in the user variable
+		if(!user) return;
+		if(typeof user.answered == "undefined") return;
+
+		var chosenOption = false;
+		for (var i = 0; i < user.answered.length; i++) {
+			if(user.answered[i].poll == poll) {
+				if(user.answered[i].option == option) {
+					chosenOption = true;
+					break;
+				}
+			}
+		};
+
+		return chosenOption;
 
 	},
 
@@ -68,29 +84,6 @@ Template.polls.helpers({
 
 		return Math.round(currentOptionCount / answersCount * 100);
 
-	},
-
-	chosenOption: function (option) {
-		
-		option = parseInt(option);
-		var poll = this._id;
-
-		var user = Meteor.user();
-		if(!user) return;
-		if(typeof user.answered == "undefined") return;
-
-		var chosenOption = false;
-		for (var i = 0; i < user.answered.length; i++) {
-			if(user.answered[i].poll == poll) {
-				if(user.answered[i].option == option) {
-					chosenOption = true;
-					break;
-				}
-			}
-		};
-
-		return chosenOption;
-
 	}
 
 });
@@ -101,7 +94,7 @@ Template.polls.events({
 		
 		var option = parseInt($(e.currentTarget).attr("data-option"));
 
-		Meteor.call("rate", this._id, option);
+		// Call the "rate" method, with the id of the Poll as the 1st argument, and the option as the 2nd
 
 	}
 

@@ -19,34 +19,6 @@ Meteor.publish("polls", function () {
 	});
 });
 
-Meteor.publish("votedPolls", function () {
+// Create another publication called "votedPolls"
+	// Which now returns polls in the user's "answered list
 
-	var userId = this.userId;
-
-	this.autorun(function () {
-
-		var answeredList = Meteor.users.findOne(userId, {
-			fields: {
-				answered: true
-			}
-		});
-
-		answeredList = answeredList.answered;
-
-		var answeredArray = [];
-		
-		if(answeredList) {
-			for (var i = 0; i < answeredList.length; i++) {
-				answeredArray.push(answeredList[i].poll);
-			};
-		}
-
-		return Polls.find({
-			_id: {
-				$in: answeredArray
-			}
-		});
-
-	});
-
-});
