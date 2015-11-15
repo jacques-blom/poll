@@ -9,11 +9,13 @@ Router.route("/", {
 	},
 
 	action: function () {
+
 		this.render("polls", {
 			data: function () {
 				// Return a cursor of all polls
 			}
 		});
+
 	}
 
 });

@@ -12,13 +12,14 @@ Meteor.publish("userAnswered", function () {
 });
 
 Meteor.publish("polls", function () {
+
 	return Polls.find({}, {
 		fields: {
-			answers: 0
+			answers: false
 		}
 	});
+
 });
 
 // Create another publication called "votedPolls"
 	// Which now returns polls in the user's "answered list
-

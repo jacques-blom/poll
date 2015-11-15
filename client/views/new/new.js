@@ -2,7 +2,7 @@
 Template.new.events({
 
 	"click .insert": function () {
-
+	
 		// Insert a new Poll with the following:
 
 			// Set "question" to the value of the .question input

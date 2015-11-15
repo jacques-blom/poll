@@ -3,7 +3,6 @@ Template.polls.helpers({
 
 	// Create a helper called "polls" and find all polls
 		// Sort them by date inserted (so that the latest one is returned first)
-
 	answersCount: function () {
 	
 		// Find the current poll
@@ -78,7 +77,6 @@ Template.polls.helpers({
 
 			if(currentOption == option) {
 				currentOptionCount += poll.answers[currentOption];
-			}
 
 		}
 
