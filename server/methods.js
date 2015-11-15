@@ -25,6 +25,9 @@ Meteor.methods({
 					user: this.userId,
 					option: option
 				}
+			},
+			$inc: {
+				answersCount: 1
 			}
 		});
 
