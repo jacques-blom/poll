@@ -1,24 +1,26 @@
 
-Router.configure({
-	layoutTemplate: "base"
-});
+// Make the 'base' template the layout template
 
 Router.route("/", {
 	
 	subscriptions: function () {
-		return [Meteor.subscribe("polls"), Meteor.subscribe("votedPolls")];
+		
+		// Also subscribe to "votedPolls" here
+		return [Meteor.subscribe("polls")];
+
 	},
 
 	action: function () {
+
 		this.render("polls", {
 			data: function () {
-				return Polls.find();
+				// Return a cursor of all polls
 			}
 		});
+
 	}
 
 });
 
-Router.route("/new", function () {
-	this.render("new");
-});
+// Create a route for /new which renders the "new" template
+	// No subscroptions or data need to be loaded

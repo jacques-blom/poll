@@ -1,13 +1,10 @@
 <template name="base">
 
-<div class="base">
+	<div class="base">
 
-	{{#if currentUser}}
-		{{> yield}}
-	{{else}}
-		{{> login}}
-	{{/if}}
+		<!-- If the user is logged in, show the contents of the app -->
+		<!-- Otherwise, show the login template -->
 
-</div>
+	</div>
 
 </template>

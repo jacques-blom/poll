@@ -1,13 +1,28 @@
 
 Template.polls.helpers({
 
-	polls: function () {
+	// Create a helper called "polls" and find all polls
+		// Sort them by date inserted (so that the latest one is returned first)
+
+	chosenOption: function (option) {
 		
-		return Polls.find({}, {
-			sort: {
-				inserted: -1
+		option = parseInt(option);
+		// Assign the user's id to the "user" variable
+
+		// Find the current Poll
+		if(!poll) return;
+		if(!poll.answers) return;
+
+		var chosenOption = 0;
+
+		for (var i = 0; i < poll.answers.length; i++) {
+			if(poll.answers[i].option == option && poll.answers[i].user == user) {
+				chosenOption = true;
+				break;
 			}
-		});
+		};
+
+		return chosenOption;
 
 	},
 
@@ -31,28 +46,6 @@ Template.polls.helpers({
 
 		return Math.round(currentOptionCount / poll.answers.length * 100);
 
-	},
-
-	chosenOption: function (option) {
-		
-		option = parseInt(option);
-		user = Meteor.userId();
-
-		var poll = Polls.findOne(this._id);
-		if(!poll) return;
-		if(!poll.answers) return;
-
-		var chosenOption = 0;
-
-		for (var i = 0; i < poll.answers.length; i++) {
-			if(poll.answers[i].option == option && poll.answers[i].user == user) {
-				chosenOption = true;
-				break;
-			}
-		};
-
-		return chosenOption;
-
 	}
 
 });
@@ -63,7 +56,7 @@ Template.polls.events({
 		
 		var option = parseInt($(e.currentTarget).attr("data-option"));
 
-		Meteor.call("rate", this._id, option);
+		// Call the "rate" method, with the id of the Poll as the 1st argument, and the option as the 2nd
 
 	}
 

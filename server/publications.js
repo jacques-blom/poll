@@ -1,14 +1,14 @@
 
 Meteor.publish("polls", function () {
+
 	return Polls.find({}, {
 		fields: {
-			answers: 0
+			answers: false
 		}
 	});
+
 });
 
-Meteor.publish("votedPolls", function () {
-	return Polls.find({
-		"answers.user": this.userId
-	});
-});
+// Create another publication called "votedPolls"
+	// Which now returns polls WITH the "answers" field,
+	// only for Polls on which a user has voted
